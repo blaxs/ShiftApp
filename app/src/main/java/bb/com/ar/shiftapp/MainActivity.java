@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private Boolean result;
+    private Boolean result2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +33,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Boolean result;
-        Boolean result2;
-
-        EditText etUser = (EditText) findViewById(R.id.editText);
+        EditText etDNI = (EditText) findViewById(R.id.editText);
         EditText etPass = (EditText) findViewById(R.id.editText2);
 
-        if(etUser.getText().equals("Blas")) {
+        if(etDNI.getText().equals("35592846")) {
             result = true;
         } else {
             result = false;
@@ -52,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(intent);
+                if(result && result2) {
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
